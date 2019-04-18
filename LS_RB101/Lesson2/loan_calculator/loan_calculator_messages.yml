@@ -1,0 +1,5 @@
+welcome: "Welcome to LoanCalculator.com"
+empty_input: "You didn't enter anything!"
+invalid_input: "That is not a valid number.  Please try again"
+another_calculation: "Would you like to perform another calculation? (Y) to continue"
+goodbye: "Thank you and goodbye!"
