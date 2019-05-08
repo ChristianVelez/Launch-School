@@ -1,5 +1,6 @@
 require 'yaml'
 MESSAGES = YAML.load_file('loan_calculator_messages.yml')
+
 def prompt(message)
   puts "=> #{message}"
 end

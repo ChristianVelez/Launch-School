@@ -1,0 +1,18 @@
+first_to_five: '------ First one to reach 5 points wins ------'
+get_ready: '----------------  Get ready  -----------------'
+choose_one: |+ 
+             Choose one: rock, paper, scissors, spock or lizard
+
+choices: |+ 
+          Enter "r" for rock
+                   "p" for paper
+                   "s" for scissors
+                   "k" for spock
+                   "l" for lizard
+
+win: 'You win!!!'
+lose: 'Computer wins!!!'
+tie: "It's a tie!"
+invalid: "That's not a valid choice."
+break: '==============================================='
+goodbye: 'Thanks for playing!  Good bye!'
