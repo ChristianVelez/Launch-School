@@ -1,5 +1,5 @@
 welcome: "Welcome to LoanCalculator.com"
-loan_amount: "Please enter the loan loan_amount"
+loan_amount: "Please enter the loan amount"
 zeros_or_letters_are_invalid: "Zeros, letters or empty spaces are not valid loan amounts"
 interest_rate: "Please enter the interest rate"
 invalid_interest_rate: "That is not a valid interest rate"

@@ -1,6 +1,8 @@
 require 'yaml'
 MESSAGES = YAML.load_file('loan_calculator_messages.yml')
 
+ACCEPTABLE_ANSWERS = %w(y yes maybe Y YES MAYBE)
+
 def prompt(message)
   puts "=> #{message}"
 end
@@ -14,7 +16,7 @@ def valid_number?(num)
 end
 
 def valid_float?(num)
-  (num.to_f.to_s == num) && (num.to_f > 0)
+  (num.to_f.to_s == num) && (num.to_f > 0.0)
 end
 
 def retrieve_loan_amount
@@ -52,7 +54,7 @@ def retrieve_loan_duration
     prompt(MESSAGES['loan_duration'])
     duration = gets.chomp
 
-    break if valid_number?(duration)
+    break if valid_number?(duration) || valid_float?(duration)
     prompt(MESSAGES['invalid_loan_duration'])
   end
   prompt("Your loan duration is #{duration} in years")
@@ -69,10 +71,6 @@ def retrieve_play_again_answer
   gets.chomp
 end
 
-def acceptable_answers
-  %w(y yes maybe Y YES MAYBE)
-end
-
 def another_operation?(answer, acceptable_answers)
   acceptable_answers.include?(answer)
 end
@@ -86,6 +84,7 @@ def display_goodbye
 end
 
 display_greeting
+
 loop do
   loan_amount = retrieve_loan_amount
   apr = retrieve_interest
@@ -93,6 +92,7 @@ loop do
   monthly_payment = perform_calculation(loan_amount, apr, duration)
   display_result(monthly_payment)
   play_again_answer = retrieve_play_again_answer
-  break unless another_operation?(play_again_answer, acceptable_answers)
+  break unless another_operation?(play_again_answer, ACCEPTABLE_ANSWERS)
 end
+
 display_goodbye

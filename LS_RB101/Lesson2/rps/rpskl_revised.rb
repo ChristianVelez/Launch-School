@@ -12,18 +12,6 @@ def prompt(message)
   puts("=> #{message}")
 end
 
-def first_to_five
-  prompt(MESSAGES['first_to_five'])
-end
-
-def start
-  prompt(MESSAGES['get_ready'])
-end
-
-def divider
-  prompt(MESSAGES['break'])
-end
-
 def space
   puts
 end
@@ -77,15 +65,15 @@ end
 comp_score = 0
 player_score = 0
 
-first_to_five
+prompt(MESSAGES['first_to_five'])
 space
-start
+prompt(MESSAGES['get_ready'])
 space
 
 loop do
   player_choice = ''
 
-  divider
+  prompt(MESSAGES['break'])
   space
 
   loop do

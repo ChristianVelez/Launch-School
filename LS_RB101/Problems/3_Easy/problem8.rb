@@ -1,94 +1,41 @@
 =begin
   
-  Instructions:
+Write another method that returns 
+true if the string passed as an 
+argument is a palindrome, false 
+otherwise. This time, however, 
+your method should be case-insensitive, 
+and it should ignore all non-alphanumeric 
+characters. If you wish, you may simplify 
+things by calling the palindrome? method
+you wrote in the previous exercise.
 
-  Write a program that asks the user to enter an integer
-  greater than 0, then asks if the wants to determine the
-  sum or product of all numbers between 1 and the entered  
-  integer.
+examples:
 
-  Examples:
-
-  >> Please enter an integer greater than 0:
-  5
-  >> Enter "s" to compute the sum, 'p' to compute the product
-  s
-  The sum of the integers between 1 and 5 is 15
+real_palindrome?('madam') == true
+real_palindrome?('Madam') == true           # (case does not matter)
+real_palindrome?("Madam, I'm Adam") == true # (only alphanumerics matter)
+real_palindrome?('356653') == true
+real_palindrome?('356a653') == true
+real_palindrome?('123ab321') == false
   
-  ----
-
-  >> Please enter an integer greater than 0:
-  6
-  >> Enter "s" to compute the sum, 'p' to compute the product
-  p
-  The sum of the integers between 1 and 6 is 720
-
-______
-
-  Problem:
-
-  - ask user for an integer
-  - integer must be positive (greater than 0)
-  - if number is negative, prompt user for a positive integer
-  - create a range from 1 to given number (ex: (1..num) )
-  - create array of numbers from range ( ex: [1, 2, 3, 4, 5] )
-  - if user enters 's', return the sum of all integers in array ( ex: [1,2,3].reduce(:+) )
-  - if user enters 'p', return product of all integers in array ( ex: [1,2,3].reduce(:+) )
-  - return a string that outputs the result based on previous choice
-
-______
-  
-  Algorithm:
-
-  - Create methods using single responsbility pattern
-  - One method to compute the sum, One to compute the product
-  - Use loop to prompt user for a positive integer
-  - Display answer with a string based on user's choice
 =end
 
-def sum
-  @num_array.reduce(:+)
+def remove_non_alphanumerics(str)
+  str.scan(/\w+/).join
 end
 
-def product
-  @num_array.reduce(:*)
+def real_palindrome?(str)
+  original   = remove_non_alphanumerics(str).downcase
+  comparison = remove_non_alphanumerics(original).reverse.downcase
+
+  original == comparison
 end
 
-def get_info
-  loop do 
-    puts   ">> Please enter an integer greater than 0:"
-    @answer = gets.chomp.to_i
-
-    if @answer < 1
-      puts ">> Please enter only a positive number"
-    else
-      @num_range = (1..@answer)
-      @num_array = @num_range.to_a
-    end
-    break if @answer > 0
-  end
-
-  @num_array
-
-  puts ">> Enter 's' to compute the sum, 'p' to compute the product"
-  @sum_or_product = gets.chomp.downcase
-
-  if @sum_or_product == "s" 
-    puts "The sum of 1 to #{@answer} is #{sum}" 
-  else 
-    puts "The product of 1 to #{@answer} is #{product}" 
-  end
-end
-
-def display_answer
-  get_info
-end
-
-display_answer
-
-
-
-
-
-
-
+p real_palindrome?('madam')
+p real_palindrome?('Madam')
+p real_palindrome?("Madam, I'm Adam")
+p real_palindrome?('356653')
+p real_palindrome?('356a653')
+p real_palindrome?('123ab321')
+p real_palindrome?('356653')
