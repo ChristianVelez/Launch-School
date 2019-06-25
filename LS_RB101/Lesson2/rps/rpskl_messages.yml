@@ -15,4 +15,4 @@ lose: 'Computer wins!!!'
 tie: "It's a tie!"
 invalid: "That's not a valid choice."
 break: '==============================================='
-goodbye: 'Thanks for playing!  Good bye!'
+goodbye: 'Thanks for playing!  Goodbye!'
