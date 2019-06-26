@@ -20,6 +20,22 @@ def valid_choice?(choice)
   GAME_INFO.key?(choice)
 end
 
+def player_moves
+  choice = ''   
+
+  loop do
+    prompt(MESSAGES['choose_one'])
+    prompt(MESSAGES['choices'])
+    
+    choice = gets.chomp.downcase
+    
+    break if valid_choice?(choice)
+    prompt(MESSAGES['invalid'])
+  end
+
+  choice
+end
+
 def display_choices(p1choice, p2choice)
   "You chose: #{long_form(p1choice)} || Computer chose: #{long_form(p2choice)}"
 end
@@ -71,23 +87,13 @@ prompt(MESSAGES['get_ready'])
 space
 
 loop do
-  player_choice = ''
-
   prompt(MESSAGES['break'])
   space
 
   display_score(player_score, comp_score)
   space
 
-  loop do
-    prompt(MESSAGES['choose_one'])
-    prompt(MESSAGES['choices'])
-
-    player_choice = gets.chomp.downcase
-
-    valid_choice?(player_choice) ? break : prompt(MESSAGES['invalid'])
-  end
-
+  player_choice = player_moves
   comp_choice = GAME_INFO.keys.sample
 
   puts display_choices(player_choice, comp_choice)
