@@ -1,0 +1,12 @@
+test = <<~HEREDOC
+          To boldly go where no one has gone before.To 
+          boldly go where no one has gone before.To boldly 
+          go where no one has gone before.To boldly go where 
+          no one has gone before.
+          HEREDOC
+
+output = <<~HEREDOC
+          #{test}
+          HEREDOC
+
+output + "!" 

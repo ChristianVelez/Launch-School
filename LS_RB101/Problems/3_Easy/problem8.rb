@@ -1,41 +1,79 @@
 =begin
   
-Write another method that returns 
-true if the string passed as an 
-argument is a palindrome, false 
-otherwise. This time, however, 
-your method should be case-insensitive, 
-and it should ignore all non-alphanumeric 
-characters. If you wish, you may simplify 
-things by calling the palindrome? method
-you wrote in the previous exercise.
+Write a program that returns true if the 
+string passed as an argument is a palindrome, 
+false otherwise. A palindrome reads the same 
+forward and backward. For this exercise, 
+case matters as does punctuation and spaces.
 
-examples:
+Example:
 
-real_palindrome?('madam') == true
-real_palindrome?('Madam') == true           # (case does not matter)
-real_palindrome?("Madam, I'm Adam") == true # (only alphanumerics matter)
-real_palindrome?('356653') == true
-real_palindrome?('356a653') == true
-real_palindrome?('123ab321') == false
+palindrome?('madam') == true
+palindrome?('Madam') == false          # (case matters)
+palindrome?("madam i'm adam") == false # (all characters matter)
+palindrome?('356653') == true
   
 =end
 
-def remove_non_alphanumerics(str)
-  str.scan(/\w+/).join
+def format_string(str)
+  str.chars.reverse.join('')
 end
 
-def real_palindrome?(str)
-  original   = remove_non_alphanumerics(str).downcase
-  comparison = remove_non_alphanumerics(original).reverse.downcase
-
-  original == comparison
+def palindrome?(str)
+  new_str = format_string(str)
+  new_str == str
 end
 
-p real_palindrome?('madam')
-p real_palindrome?('Madam')
-p real_palindrome?("Madam, I'm Adam")
-p real_palindrome?('356653')
-p real_palindrome?('356a653')
-p real_palindrome?('123ab321')
-p real_palindrome?('356653')
+p palindrome?('madam')
+p palindrome?('Madam')
+p palindrome?("madam i'm adam")
+p palindrome?('356653')
+
+
+=begin 
+
+  Approach:
+
+  As we already know, a palindrome reads the same forwards and backwards. With
+  this in mind, we are asked to take a string input and check to see if it is
+  a palindrome.
+
+  In an effort to make the business logic a bit more legible and easier to
+  understand, I decided to split the code into to two methods.  The first
+  method, format_str(str), will take the string input, split into individual
+  characters, reverse those characters and finally join them back into a 
+  single string.
+
+  This output is then passed on to our second method, palindrome?(str), where
+  we assign it to a variable called new_str.  Finally we do an an equality
+  check (==) between our reversed string and our original string where the
+  the output of this palindrome?(str) method will be a boolean.  Simply, true
+  if it is a palindrome or false if it is not.
+
+=end
+
+# Further Exploration
+
+def format_input(input)
+  input.reverse
+end
+
+def palindrome?(input)
+  new_input = format_input(input)
+  new_input == input
+end
+
+p palindrome?(['a', 'b', 'a']) 
+p palindrome?([1,2,3,2,1])
+p palindrome?("madam")
+p palindrome?([1,2,3,2])
+
+=begin
+  
+  This method has been expanded to also allow for arrays as inputs.
+
+  It is the same exact code as the original method, we simply changed the
+  variable names from str to input to reflect the many ways in which this
+  can be provided to our methods.
+
+=end
