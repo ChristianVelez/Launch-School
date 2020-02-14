@@ -1,0 +1,15 @@
+welcome: "welcome to twenty one"
+cards_dealt: "cards will now be dealt"
+initial_hand: '====== Initial Hand ======'
+hit_or_stay?: "would you like to (h)it or (s)tay?"
+invalid_choice: "sorry, that is not a valid choice"
+player_turn: "--- player turn"
+dealer_turn: "========= Dealer Turn =========="
+player_busted: 'player busted!....dealer wins'
+dealer_busted: 'dealer busted...player wins'
+player_wins: 'player wins'
+dealer_wins: 'dealer wins'
+tie: "it's a tie!"
+score: "========= score =========="
+play_again?: "do you want to play again? (y or n)"
+goodbye: "thanks for playing twenty one.... good bye"
