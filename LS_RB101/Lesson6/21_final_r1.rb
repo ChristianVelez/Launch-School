@@ -312,8 +312,6 @@ loop do
     deal_hand(player, new_deck, 2)
     deal_hand(dealer, new_deck, 2)
 
-    prompt("there are #{new_deck.count} cards left in the deck")
-
     display_score(player, dealer)
     display_both_hands(player, dealer)
 
